@@ -9,8 +9,5 @@ class Prototype < ApplicationRecord
   validates :concept, presence: true
   validates :image, presence: true
 
-  def was_attached?
-    self.image.attached?
-  end
   
 end
