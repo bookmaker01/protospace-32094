@@ -1,0 +1,23 @@
+<div class="card">
+   <%= link_to image_tag(prototype.image, class: :card__img ), prototype_path(prototype) %>
+  <div class="card__body">
+    <%= link_to "prototype.titlte", root_path, class: :card__title%>
+          <ul class="more_list">
+          <li>
+            <%= link_to '詳細', prototype_path(prototype.id), method: :get %>
+          </li>
+          <% if user_signed_in? && current_user.id == tweet.user_id %>
+            <li>
+              <%= link_to '編集', edit_prototype_path(protitype.id), method: :get %>
+            </li>
+            <li>
+              <%= link_to '削除', prototype_path(prototype.id), method: :delete %>
+            </li>
+          <% end %>
+        </ul>
+    <p class="card__summary">
+      <%= "prototype.catch_copy" %>
+    </p>
+    <%= link_to "prototype.user.name", root_path, class: :card__user %>
+  </div>
+</div>
