@@ -34,13 +34,11 @@ class PrototypesController < ApplicationController
     end
 
     def update
-      if current_user.update(user_params)
-        redirect_to root_path
+      if @prototype.update(prototype_params)
+        redirect_to prototype_path(@prototype)
       else
         render :edit
       end
-      prototype = Prototype.find(params[:id])
-      prototype.update(prototype_params)
     end
 
     def destroy
@@ -59,6 +57,10 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
+  end
+
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @prototype.user
   end
 
 end
